@@ -816,35 +816,47 @@
       .testimonial-card { min-width: 90vw; max-width: 95vw; }
       .work-img { width: 90vw; height: 80px; }
     }
-    /* --- World Map Background: Reliable Full Fit --- */
-    .hero-section > div:first-child {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-      width: 100%;
-      height: 100%;
-      background:
-        linear-gradient(120deg,rgba(239, 242, 243, 0.527) 0%,rgba(51, 212, 233, 0.541) 100%),
-        url('world-map-3d-silhouette.png');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      filter: blur(1.2px) brightness(0.98);
-    }
-    @media (max-width: 900px) {
-      .hero-section > div:first-child {
-        background-size: cover;
-        min-height: 60vh;
-      }
-    }
-    @media (max-width: 600px) {
-      .hero-section > div:first-child {
-        background-size: cover;
-        min-height: 40vh;
-      }
-    }
+    /* --- World Map Background: full-bleed, no white --- */
+.hero-section > div:first-child {
+  position: absolute;
+  inset: -2%;              /* slight bleed to kill white edges */
+  width: 104%;
+  height: 104%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+
+  background:
+    linear-gradient(120deg,
+      rgba(239, 242, 243, 0.45),
+      rgba(56, 182, 255, 0.55)
+    ),
+    url('world-map-3d-silhouette.png') center/cover no-repeat;
+
+  filter: brightness(1.02); /* remove blur — keeps edges clean */
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .hero-section {
+    min-height: 70vh;
+  }
+  .hero-section > div:first-child {
+    inset: -3%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .hero-section {
+    min-height: 60vh;
+  }
+  .hero-section > div:first-child {
+    inset: -4%;
+  }
+}
+
+    
   </style>
 </head>
 <body>
@@ -894,10 +906,11 @@
       </h1>
       
       <div class="hero-subtitle" 
-style="font-size:2.0rem;color:var(--gray);font-weight:500;margin-bottom:2.9rem;
+style="font-size:1.5rem;color:var(--gray);font-weight:500;margin-bottom:2.9rem;
 max-width:100%; text-align:left; line-height:1.2; white-space: nowrap;">
 <b>Background Verification, Contract Staffing, Payroll.</b>
-</div> <br> <span style="color:#38b6ff;">Your Growth, Our Mission.</span>
+</div> 
+      <br> <span style="color:#38b6ff;">Your Growth, Our Mission.</span>
       </div>
       <button class="hero-btn" style="display:inline-flex;align-items:center;gap:0.7em;padding:1.1em 2.5em;font-size:1.15rem;font-weight:700;border-radius:2em;background:transparent;color:var(--charcoal);border:2.5px solid #38b6ff;box-shadow:0 4px 24px #38b6ff22;letter-spacing:0.08em;text-transform:uppercase;outline:none;position:relative;overflow:hidden;transition:background 0.2s,box-shadow 0.2s,color 0.2s,border 0.2s,transform 0.2s;cursor:pointer;">
         <i data-feather="arrow-right"></i> Get Started
